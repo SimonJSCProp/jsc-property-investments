@@ -1,0 +1,106 @@
+/* purgecss start ignore */
+@import 'intl-tel-input';
+/* purgecss end ignore */
+
+.questionnaire-header {
+    .btn-prev-container {
+        @apply absolute left-[20px] sm:left-[50px] lg:left-[150px] xl:left-[250px];
+
+        top: 50%;
+        transform: translateY(-50%);
+        svg {
+            width: 25px;
+            height: 25px;
+        }
+        
+        #prev-button-top {
+            @apply hidden;
+
+            &.active {
+                @apply block;
+            }
+        }
+    }
+}
+
+#questionnaire {
+    .iti--inline-dropdown .iti__country-list {
+        max-height: 180px;
+    }
+
+    .select-wrapper {
+        @apply relative;
+
+        span.chevron {
+            @apply absolute;
+
+            content: '';
+            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 25px;
+            height: 25px;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+    }
+
+    select {
+        @apply relative border border-black bg-white text-black shadow-lg rounded-md text-xl;
+
+        width: 100%;
+        padding: 1.5rem 3rem 1.5rem 0.5rem;
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari and Chrome */
+        appearance: none;
+    }
+
+    label {
+        @apply inline-block;
+    }
+
+    .radio-wrapper {
+        @apply relative flex gap-2 p-4 bg-gray-100 rounded-full pl-12 cursor-pointer;
+
+        .radiomark {
+            @apply absolute bg-white p-1 rounded-full;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1rem;
+            height: 25px;
+            width: 25px;
+
+            svg {
+                @apply fill-white hidden;
+            }
+        }
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        span {
+            @apply text-xl;
+        }
+
+        &:hover {
+            @apply bg-gray-200;
+        }
+
+        &.checked {
+            @apply bg-gray-200;
+
+            .radiomark {
+                @apply bg-green-400;
+
+                svg {
+                    @apply block;
+                }
+            }
+        }
+    }
+}

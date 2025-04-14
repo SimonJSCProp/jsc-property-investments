@@ -1,0 +1,30 @@
+@import 'swiper/css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles should be used sparingly if at all. */
+@layer base {
+    //@font-face {
+    //    font-family: "Averta";
+    //    src: url("../fonts/Averta-Regular.woff") format("woff");
+    //    font-weight: normal;
+    //    font-style: normal;
+    //}
+
+    h1,h2,h3,h4,h5,h6{
+        font-family: "Averta", sans-serif;
+    }
+
+    p{
+        font-family: "Averta", sans-serif;
+    }
+
+    .field-error {
+        display: block;
+        margin: .5rem 0 1rem;
+        color: red;
+        font-size: 1rem;
+    }
+}
