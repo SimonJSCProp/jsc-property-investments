@@ -1,4 +1,5 @@
-@import 'swiper/css';
+// @import 'swiper/css';
+@import 'fonts';
 
 @tailwind base;
 @tailwind components;
@@ -6,25 +7,19 @@
 
 /* Global styles should be used sparingly if at all. */
 @layer base {
-    //@font-face {
-    //    font-family: "Averta";
-    //    src: url("../fonts/Averta-Regular.woff") format("woff");
-    //    font-weight: normal;
-    //    font-style: normal;
-    //}
+	.field-error {
+		display: block;
+		margin: 0.5rem 0 1rem;
+		color: red;
+		font-size: 1rem;
+	}
+}
 
-    h1,h2,h3,h4,h5,h6{
-        font-family: "Averta", sans-serif;
-    }
-
-    p{
-        font-family: "Averta", sans-serif;
-    }
-
-    .field-error {
-        display: block;
-        margin: .5rem 0 1rem;
-        color: red;
-        font-size: 1rem;
-    }
+@layer utilities {
+	.section-heading {
+		@apply text-[28px] font-bold leading-[115%] tracking-[-0.7px] md:text-[42px] md:tracking-[-1.05px];
+	}
+}
+.container {
+	@apply mx-auto max-w-[1366px];
 }
