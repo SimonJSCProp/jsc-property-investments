@@ -13,6 +13,7 @@ import videos from './video-embeds.js'
 import viewAnimation from './view-animation.js'
 import date from './date.js'
 import { initModals } from "./modal.js"
+import accordion from './accordion.js'
 
 contentLoaded(window, function (e) {
 	document.body.classList.add('ready');
@@ -26,4 +27,5 @@ contentLoaded(window, function (e) {
 	videos()
 	date()
 	initModals();
+	accordion();
 })
