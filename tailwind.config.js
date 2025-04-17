@@ -19,9 +19,9 @@ export default {
 			// 	'2xl': '1320px',
 			// },
 		},
-		gridTemplateColumns: {
-			property: 'auto 64px 1fr',
-			'property-items': '2fr 1fr',
+
+		data: {
+			active: 'state~="active"',
 		},
 		fontFamily: {
 			sans: ['ui-sans-serif', 'system-ui'],
@@ -34,8 +34,13 @@ export default {
 			onyx: '#11383B',
 			white: '#FFFFFF',
 			black: '#000000',
+			transparent: 'transparent',
 		},
 		extend: {
+			gridTemplateColumns: {
+				property: 'auto 64px 1fr',
+				'property-items': '2fr 1fr',
+			},
 			// fontSize: {
 			// 	xs: '0.8rem',
 			// 	sm: '0.8rem',

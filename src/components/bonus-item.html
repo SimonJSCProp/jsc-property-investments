@@ -1,0 +1,30 @@
+<div
+	class="grid-cols-1 md:grid-cols-2 relative grid justify-items-center gap-[10px] rounded-2xl bg-white px-[21px] py-[27px] md:justify-items-start [&:last-of-type_[data-step-arrow]]:hidden"
+>
+	<!-- Badge -->
+	<div
+		class="inline rounded-full bg-onyx px-3 py-[7px] text-[10px] font-bold uppercase leading-none tracking-[-0.21px] text-white md:col-start-2 md:text-base"
+	>
+		{{ badge }}
+	</div>
+	<!-- Heading -->
+	<h3
+		class="max-w-[234px] text-center font-bold tracking-[-0.4px] md:col-start-2 md:max-w-[304px] md:text-left md:text-lg"
+	>
+		{{ heading }}
+	</h3>
+	<!-- Image -->
+	<div
+		class="flex items-center justify-self-center md:col-start-1 md:row-span-3 md:row-start-1"
+	>
+		<img src="{{ image }}" alt="" class="h-full max-h-[180px] w-auto" />
+	</div>
+	<p class="md:col-start-2 md:text-[17px]">{{ description }}</p>
+	<!-- Arrow -->
+	<div
+		class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-2/3"
+		data-step-arrow
+	>
+		<icon src="icon-step-arrow.svg" alt="" class="size-8 md:size-9" />
+	</div>
+</div>

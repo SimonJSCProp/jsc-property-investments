@@ -20,11 +20,16 @@ export default function sliders() {
 		var options = {
 			speed: 600,
 			loop: true,
-			lazy: true,
+			// lazy: true,
 			slideToClickedSlide: true,
-			centeredSlides: true,
-			spaceBetween: 30,
+			// centeredSlides: true,
+			spaceBetween: 13,
 			slidesPerView: 1,
+			breakpoints: {
+				768: {
+					slidesPerView: 3,
+				},
+			},
 			autoplay: {
 				delay: 5000,
 				disableOnInteraction: true,
@@ -38,25 +43,26 @@ export default function sliders() {
 				clickable: true,
 				bulletActiveClass: 'text-green-500',
 				renderBullet: function (index, className) {
-					className += ' cursor-pointer w-3.5 h-3.5 rounded-full bg-[currentColor] mx-1';
-					return '<span class="'+className+'"></span>'
-				}
+					className +=
+						' cursor-pointer w-3.5 h-3.5 rounded-full bg-[currentColor] mx-1'
+					return '<span class="' + className + '"></span>'
+				},
 			},
 			thumbs: {},
 		}
 
-		if(el.classList.contains('swiper-cutoff')){
-			options.slidesPerView = 1.5;
+		if (el.classList.contains('swiper-cutoff')) {
+			options.slidesPerView = 1.5
 		}
 
 		if (el.classList.contains('image-after-before-holder')) {
-			options.autoplay = false;
-			options.allowTouchMove = false;
-			options.centeredSlides = false;
+			options.autoplay = false
+			options.allowTouchMove = false
+			options.centeredSlides = false
 			options.breakpoints = {
 				768: {
 					slidesPerView: 2,
-					spaceBetween: 40
+					spaceBetween: 40,
 				},
 				1200: {
 					slidesPerView: 3,
@@ -67,8 +73,8 @@ export default function sliders() {
 
 		if (el.classList.contains('swiper-testimonial-blocks')) {
 			options.centeredSlides = false
-			options.slidesPerView = 1;
-			options.slidesOffsetbefore = 0;
+			options.slidesPerView = 1
+			options.slidesOffsetbefore = 0
 			options.breakpoints = {
 				640: {
 					spaceBetween: 20,
