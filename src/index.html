@@ -41,7 +41,7 @@
 		></include>
 
 		<!-- Hero Section -->
-		<section class="relative pt-[100px] md:pt-[150px]">
+		<section class="relative bg-azure pt-[100px] md:pt-[150px]">
 			<div class="container relative z-10">
 				<div class="flex flex-col gap-[14px] text-center">
 					<!-- Eyebrow -->
@@ -81,9 +81,28 @@
 						>
 					</div>
 				</div>
-				<!-- Banner -->
+			</div>
+			<!-- Banner -->
+
+			<!-- BG Image -->
+			<div class="-mt-28">
+				<!-- Desktop BG Image -->
+				<img
+					src="hero-bg-md.png"
+					class="hidden w-full object-cover md:block"
+				/>
+				<!-- Mobile BG Image -->
+				<img
+					src="hero-bg-sm.png"
+					class="block w-full object-cover md:hidden"
+				/>
+			</div>
+
+			<div
+				class="container absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2"
+			>
 				<ul
-					class="font-roboto grid-cols-2 relative z-10 mx-auto grid max-w-[1140px] items-center justify-between gap-3 divide-[#E7E6E6] bg-white px-4 py-5 text-[15px] tracking-[-0.42px] md:flex md:translate-y-1/2 md:flex-row md:gap-0 md:divide-x md:rounded-2xl md:p-14 md:px-4 md:py-7 md:text-xl"
+					class="font-roboto mx-auto grid max-w-[1140px] grid-cols-2 items-center justify-between gap-3 divide-[#E7E6E6] rounded-2xl bg-white px-4 py-5 text-[15px] leading-[18px] tracking-[-0.42px] drop-shadow-2xl md:flex md:flex-row md:gap-0 md:divide-x md:rounded-2xl md:p-14 md:px-4 md:py-7 md:text-xl"
 				>
 					<li
 						class="flex flex-row items-center gap-2 md:gap-[10px] md:px-8"
@@ -93,7 +112,8 @@
 							class="size-6 shrink-0 md:size-8"
 						/>
 						<div>
-							<span class="font-bold">$16M+</span> <br />
+							<span class="font-bold">$16M+</span>
+							<br class="hidden md:block" />
 							Purchased in Property In 27 Months
 						</div>
 					</li>
@@ -134,20 +154,6 @@
 						</div>
 					</li>
 				</ul>
-			</div>
-
-			<!-- BG Image -->
-			<div class="">
-				<!-- Desktop BG Image -->
-				<img
-					src="hero-bg-md.png"
-					class="hidden w-full object-cover md:block"
-				/>
-				<!-- Mobile BG Image -->
-				<img
-					src="hero-bg-sm.png"
-					class="block w-full object-cover md:hidden"
-				/>
 			</div>
 		</section>
 		<!-- Columns -->
@@ -1095,7 +1101,7 @@
 						class="font-inter flex flex-row overflow-hidden rounded-xl bg-[#F2F2F2] font-bold text-[#05293D] md:hidden"
 					>
 						<button
-							class="border-transparent data-active:border-sage data-active:bg-sage/20 data-active:text-sage w-1/2 border-b-2 px-7 py-5 leading-[110%] text-[#05293D]"
+							class="w-1/2 border-b-2 border-transparent px-7 py-5 leading-[110%] text-[#05293D] data-active:border-sage data-active:bg-sage/20 data-active:text-sage"
 							data-toggle-col="2"
 						>
 							<img
@@ -1105,7 +1111,7 @@
 							/>
 						</button>
 						<button
-							class="border-transparent data-active:border-sage data-active:bg-sage/20 data-active:text-sage w-1/2 border-b-2 px-7 py-5 leading-[110%] text-[#05293D]"
+							class="w-1/2 border-b-2 border-transparent px-7 py-5 leading-[110%] text-[#05293D] data-active:border-sage data-active:bg-sage/20 data-active:text-sage"
 							data-toggle-col="3"
 						>
 							Other Buyers' Agents & DIY Investing
@@ -1116,7 +1122,7 @@
 						<thead>
 							<tr class="hidden md:table-row">
 								<th
-									class="bg-transparent w-1/3 rounded-tl-2xl py-4 md:rounded-t-[20px] md:py-9 md:text-[23px]"
+									class="w-1/3 rounded-tl-2xl bg-transparent py-4 md:rounded-t-[20px] md:py-9 md:text-[23px]"
 									data-table-col="1"
 								></th>
 								<th
@@ -1130,7 +1136,7 @@
 									/>
 								</th>
 								<th
-									class="bg-transparent w-1/3 rounded-tr-2xl py-4 md:rounded-t-[20px] md:px-20 md:py-9 md:text-xl"
+									class="w-1/3 rounded-tr-2xl bg-transparent py-4 md:rounded-t-[20px] md:px-20 md:py-9 md:text-xl"
 									data-table-col="3"
 								>
 									Other Buyers' Agents & DIY Investing
@@ -1737,7 +1743,7 @@
 				</div>
 				<!-- Grid -->
 				<div
-					class="md:grid-cols-3 flex flex-col gap-[10px] md:grid md:gap-4 md:gap-y-5"
+					class="flex flex-col gap-[10px] md:grid md:grid-cols-3 md:gap-4 md:gap-y-5"
 				>
 					<img src="investment-01.png" alt="" class="w-full" />
 					<img src="investment-02.png" alt="" class="w-full" />
@@ -1749,9 +1755,9 @@
 			</div>
 		</section>
 		<!-- Steps -->
-		<section class="py-12 md:py-24">
-			<div class="container">
-				<div class="mx-auto max-w-[842px]">
+		<section class="">
+			<div class="container border-t border-[#E1E1E1] py-12 md:py-24">
+				<div class="mx-auto mb-[30px] max-w-[842px] md:mb-[60px]">
 					<h2 class="section-heading text-center">
 						Here’s How You Can Secure Your First High-Growth
 						Investment in 3 Simple Steps…
@@ -1792,6 +1798,23 @@
         "desktopImage": "steps-03-md.png"
       }'
 					></include>
+				</div>
+				<!-- CTA -->
+				<div class="mt-8 w-full shrink-0 flex-col items-stretch">
+					<div class="flex justify-center">
+						<a
+							href="#offer-form"
+							class="rounded-full bg-sage px-9 py-3 text-center font-bold leading-[120%] text-white md:py-5 md:text-xl"
+							>BOOK MY FREE 'WEALTH KICKSTARTER' CALL</a
+						>
+					</div>
+					<p
+						class="mx-auto mt-2 max-w-[282px] text-center text-sm md:max-w-full"
+					>
+						Achieve
+						<span class="font-bold">$100K</span> In Capital Growth
+						in Your First 12 Months - Guaranteed!
+					</p>
 				</div>
 			</div>
 		</section>
