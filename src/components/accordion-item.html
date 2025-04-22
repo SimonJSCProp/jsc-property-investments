@@ -1,0 +1,23 @@
+<!-- Accordion Item -->
+<div class="overflow-hidden rounded-xl">
+	<!-- Title -->
+	<div
+		class="accordion__title bg-gray-100 {{classes}} relative cursor-pointer px-6 py-6 pr-14 text-lg font-bold text-black transition-colors duration-500 after:absolute after:right-6 after:top-1/2 after:block after:size-4 after:-translate-y-1/2 after:transition-[transform] after:duration-500 after:content-['+'] [&.active+div]:bg-azure [&.active+div]:text-black [&.active]:bg-azure [&.active]:text-black [&.active]:after:content-['-']"
+	>
+		{{ title }}
+	</div>
+	<!-- Content -->
+	<div
+		class="accordion__content h-0 overflow-hidden transition-[height] duration-500"
+	>
+		<div class="flex h-auto gap-[10px] px-6 pb-4 text-onyx">
+			<!-- Image -->
+			<div class="flex-0 max-w-[61px] shrink-0 md:max-w-[93px]">
+				<img src="{{ mdImg }}" class="hidden h-auto w-full md:block" />
+				<img src="{{ smImg }}" class="block h-auto w-full md:hidden" />
+			</div>
+			<!-- Content -->
+			<p class="w-full pb-4">{{ content }}</p>
+		</div>
+	</div>
+</div>
