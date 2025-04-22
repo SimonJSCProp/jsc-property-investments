@@ -28,15 +28,16 @@ export default {
 			serif: ['ui-serif', 'Georgia'],
 			sfpro: ['SFProDisplay', 'sans-serif'],
 		},
-		colors: {
-			azure: '#F7FAFF',
-			sage: '#4DA67A',
-			onyx: '#11383B',
-			white: '#FFFFFF',
-			black: '#000000',
-			transparent: 'transparent',
-		},
+
 		extend: {
+			colors: {
+				azure: '#F7FAFF',
+				sage: '#4DA67A',
+				onyx: '#11383B',
+				white: '#FFFFFF',
+				black: '#000000',
+				transparent: 'transparent',
+			},
 			gridTemplateColumns: {
 				property: 'auto 64px 1fr',
 				'property-items': '2fr 1fr',
@@ -182,5 +183,8 @@ export default {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/forms')],
+	plugins: [
+		require('@tailwindcss/forms'),
+		require('@tailwindcss/typography'),
+	],
 }
