@@ -111,8 +111,14 @@
 							</li>
 						</ul>
 					</div>
-					<div class="mx-auto">Pending Calendly</div>
+
 				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="container">
+				<div  id="calendly-widget" class="mx-auto w-full min-h-[860px] [&_iframe]:min-h-[860px]"></div>
 			</div>
 		</section>
 
@@ -201,6 +207,18 @@
 		<!-- <include src="privacy-policy.html"></include> -->
 
 		<!-- Custom Scripts -->
+
+		 <!-- Calendly -->
+		 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+		 <script>
+			 Calendly.initInlineWidget({
+				 url: 'https://calendly.com/simon-jscpropertyinvestments/free-30-minute-capital-compounder-strategy-session',
+				 parentElement: document.getElementById('calendly-widget'),
+			 });
+		 </script>
+
+		
 
 		<script type="module" src="../global.js"></script>
 		<!-- <script type="module" src="./thankyou.js"></script> -->
