@@ -64,7 +64,30 @@
 			<div class="container">
 				<div class="mx-auto flex flex-col items-center gap-4">
 					<h1 class="section-heading">Thank you!</h1>
-					<h2>We'll be in touch soon.</h2>
+
+					<script
+						src="https://fast.wistia.com/player.js"
+						async
+					></script>
+					<script
+						src="https://fast.wistia.com/embed/4m3lf6e4dz.js"
+						async
+						type="module"
+					></script>
+					<style>
+						wistia-player[media-id='4m3lf6e4dz']:not(:defined) {
+							background: center / contain no-repeat
+								url('https://fast.wistia.com/embed/medias/4m3lf6e4dz/swatch');
+							display: block;
+							filter: blur(5px);
+
+							aspect-ratio: 16 / 9;
+						}
+					</style>
+					<wistia-player
+						media-id="4m3lf6e4dz"
+						aspect="1.7777777777777777"
+					></wistia-player>
 					<div class="flex justify-center">
 						<a
 							href="/"
