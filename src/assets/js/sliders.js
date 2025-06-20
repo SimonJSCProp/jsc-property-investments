@@ -71,6 +71,18 @@ export default function sliders() {
 			}
 		}
 
+		if (el.classList.contains('swiper-main-testimonials')) {
+			options.centeredSlides = true
+			options.slidesPerView = 1
+			options.slidesOffsetbefore = 0
+			options.breakpoints = {
+				992: {
+					slidesPerView: 2,
+					spaceBetween: 50,
+				},
+			}
+		}
+
 		if (el.classList.contains('swiper-testimonial-blocks')) {
 			options.centeredSlides = false
 			options.slidesPerView = 1
