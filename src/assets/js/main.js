@@ -14,6 +14,7 @@ import viewAnimation from './view-animation.js'
 import date from './date.js'
 import { initModals } from "./modal.js"
 import accordion from './accordion.js'
+import dynLocation from './dyn-location.js'
 
 contentLoaded(window, function (e) {
 	document.body.classList.add('ready');
@@ -28,4 +29,5 @@ contentLoaded(window, function (e) {
 	date()
 	initModals();
 	accordion();
+	dynLocation();
 })
