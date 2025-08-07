@@ -71,6 +71,27 @@ export default function sliders() {
 			}
 		}
 
+		if (el.classList.contains('swiper-property')) {
+			options.centeredSlides = true
+			options.slidesPerView = 1
+			options.slidesOffsetbefore = 0
+			options.loop = true 
+			options.navigation = {
+				nextEl: nextEl ? nextEl : '',
+				prevEl: prevEl ? prevEl : '',
+			}
+			options.breakpoints = {
+				768: {
+					slidesPerView: 1,
+					spaceBetween: 40,
+				},
+				1200: {
+					slidesPerView: 1,
+					spaceBetween: 40,
+				},
+			}
+		}
+
 		if (el.classList.contains('swiper-main-testimonials')) {
 			options.centeredSlides = true
 			options.slidesPerView = 1

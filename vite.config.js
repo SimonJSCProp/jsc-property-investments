@@ -54,7 +54,7 @@ export default defineConfig({
 			tag: 'icon', 
 			attr: 'src'
 		}),
-		utwm()
+		// utwm()
 	],
 	server: {
 		port: 3000,
