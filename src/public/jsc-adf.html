@@ -1349,10 +1349,13 @@ function submitForm() {
   // Goal and budget from radio selections
   var goalEl = document.querySelector('input[name="goal"]:checked');
   var budgetEl = document.querySelector('input[name="budget"]:checked');
-  var notes = [];
-  if (goalEl)   notes.push('Goal: ' + goalEl.value);
-  if (budgetEl) notes.push('Budget: ' + budgetEl.value);
-  if (notes.length) data.append('Description', notes.join(' | '));
+  if (goalEl)   data.append('What_best_describes_your_situation', goalEl.value);
+  if (budgetEl) data.append('Budget_Range', budgetEl.value);
+  var utmSource = document.getElementById('hf-utm-source') ? document.getElementById('hf-utm-source').value : '';
+  var leadOrigin = 'Website';
+  if (utmSource.match(/facebook|meta|instagram/i)) leadOrigin = 'Meta Ads';
+  else if (utmSource.match(/google/i))             leadOrigin = 'Google Ads';
+  data.append('Lead_Origin', leadOrigin);
 
   // Tracking fields
   var trackIds = ['hf-page','hf-utm-source','hf-utm-medium','hf-utm-campaign','hf-utm-content','hf-referrer'];
