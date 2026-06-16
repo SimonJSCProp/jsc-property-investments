@@ -1355,7 +1355,7 @@ function submitForm() {
   var leadOrigin = 'Website';
   if (utmSource.match(/facebook|meta|instagram/i)) leadOrigin = 'Meta Ads';
   else if (utmSource.match(/google/i))             leadOrigin = 'Google Ads';
-  data.append('Lead_Origin', leadOrigin);
+  data.append('Lead_Source_2_0', leadOrigin);
 
   // Tracking fields
   var trackIds = ['hf-page','hf-utm-source','hf-utm-medium','hf-utm-campaign','hf-utm-content','hf-referrer'];
