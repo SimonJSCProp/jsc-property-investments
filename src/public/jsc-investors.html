@@ -1383,6 +1383,8 @@ function submitForm() {
   if (document.querySelector('.form-sub')) document.querySelector('.form-sub').style.display = 'none';
   document.querySelector('.form-lbl').style.display = 'none';
   document.getElementById('formSuccess').classList.add('show');
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({'event': 'form_submission'});
 }
 </script>
 
