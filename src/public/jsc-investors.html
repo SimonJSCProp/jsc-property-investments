@@ -475,28 +475,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="radio-box-label">👇 Tap a card to get started</div>
         <div class="radio-grid">
           <label class="radio-card">
-            <input type="radio" name="goal" value="First Home">
+            <input type="radio" name="goal" value="Buy My First Home">
             <div class="radio-label">
               <span class="radio-icon">🏡</span>
               <div><div class="radio-text">Buy My First Home</div><div class="radio-sub">Owner-occupier</div></div>
             </div>
           </label>
           <label class="radio-card">
-            <input type="radio" name="goal" value="First Investment">
+            <input type="radio" name="goal" value="First Investment Property">
             <div class="radio-label">
               <span class="radio-icon">📈</span>
               <div><div class="radio-text">First Investment Property</div><div class="radio-sub">Build wealth through property</div></div>
             </div>
           </label>
           <label class="radio-card">
-            <input type="radio" name="goal" value="Grow Portfolio">
+            <input type="radio" name="goal" value="Grow My Portfolio">
             <div class="radio-label">
               <span class="radio-icon">🏘️</span>
               <div><div class="radio-text">Grow My Portfolio</div><div class="radio-sub">I already own property</div></div>
             </div>
           </label>
           <label class="radio-card">
-            <input type="radio" name="goal" value="Not Sure">
+            <input type="radio" name="goal" value="Not Sure Yet">
             <div class="radio-label">
               <span class="radio-icon">🤔</span>
               <div><div class="radio-text">Not Sure Yet</div><div class="radio-sub">I need guidance on options</div></div>
@@ -521,14 +521,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </label>
           <label class="radio-card">
-            <input type="radio" name="budget" value="$500K–$750K">
+            <input type="radio" name="budget" value="$500K - $750K">
             <div class="radio-label">
               <span class="radio-icon">💰</span>
               <div><div class="radio-text">$500K – $750K</div></div>
             </div>
           </label>
           <label class="radio-card">
-            <input type="radio" name="budget" value="$750K–$1M">
+            <input type="radio" name="budget" value="$750K - $1M">
             <div class="radio-label">
               <span class="radio-icon">💰</span>
               <div><div class="radio-text">$750K – $1M</div></div>
@@ -1341,13 +1341,13 @@ function submitForm() {
   // Goal and budget from radio selections
   var goalEl = document.querySelector('input[name="goal"]:checked');
   var budgetEl = document.querySelector('input[name="budget"]:checked');
-  if (goalEl)   data.append('What_best_describes_your_situation', goalEl.value);
-  if (budgetEl) data.append('Budget_Range', budgetEl.value);
+  if (goalEl)   data.append('LEADCF209', goalEl.value);
+  if (budgetEl) data.append('LEADCF220', budgetEl.value);
   var utmSource = document.getElementById('hf-utm-source') ? document.getElementById('hf-utm-source').value : '';
   var leadOrigin = 'Website';
   if (utmSource.match(/facebook|meta|instagram/i)) leadOrigin = 'Meta Ads';
   else if (utmSource.match(/google/i))             leadOrigin = 'Google Ads';
-  data.append('Lead_Source_2_0', leadOrigin);
+  data.append('LEADCF177', leadOrigin);
 
   // Tracking fields
   var trackIds = ['hf-page','hf-utm-source','hf-utm-medium','hf-utm-campaign','hf-utm-content','hf-referrer'];
