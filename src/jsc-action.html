@@ -10,6 +10,8 @@
 <!-- Wistia preconnect for faster video load -->
 <link rel="preconnect" href="https://fast.wistia.com">
 <link rel="dns-prefetch" href="//fast.wistia.com">
+<!-- Calendly widget assets — loaded upfront, initialised only after lead form submits -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -28,7 +30,6 @@ html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--dark);color:var(--text-l);line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-
 /* ===== NAV ===== */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;align-items:center;background:rgba(13,17,23,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)}
 .nav-i{width:100%;max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
@@ -40,7 +41,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .nav-phone:hover{color:var(--green)}
 .nav-btn{font-family:var(--fh);font-size:13px;font-weight:800;letter-spacing:0.3px;background:var(--green);color:#000;padding:10px 20px;border-radius:7px;transition:background .18s;white-space:nowrap}
 .nav-btn:hover{background:var(--green-d)}
-
 /* ===== HERO — compact above-fold ===== */
 .hero{padding:76px 28px 16px;background:var(--dark);text-align:center;position:relative;overflow:hidden}
 .hero-glow{position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:800px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none}
@@ -56,7 +56,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .trust-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:16px}
 .tr-item{display:flex;align-items:center;gap:7px;font-family:var(--fh);font-size:12px;font-weight:700;color:var(--muted-l)}
 .tr-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
-
 /* ===== VSL ===== */
 .vsl-sec{background:var(--dark);padding:0 28px 32px}
 .vsl-in{max-width:860px;margin:0 auto}
@@ -64,28 +63,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .vf iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .vsl-hook{text-align:center;margin-top:16px;font-size:15px;color:var(--muted-l)}
 .vsl-hook strong{color:var(--green)}
-
 /* ===== MULTI-STEP FORM ===== */
 .form-sec{background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);padding:56px 28px 72px;border-top:1px solid rgba(46,204,113,0.12)}
 .form-in{max-width:640px;margin:0 auto}
 .form-lbl{font-family:var(--fh);font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--green);text-align:center;margin-bottom:10px}
 .form-headline{font-family:var(--fh);font-size:clamp(22px,3.5vw,38px);font-weight:900;letter-spacing:-1.5px;text-align:center;color:var(--text-l);margin-bottom:8px;line-height:1.1}
 .form-sub{font-size:15px;color:var(--muted-l);text-align:center;margin-bottom:32px}
-
 /* Progress dots */
 .prog-wrap{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:32px}
 .prog-dot{width:10px;height:10px;border-radius:50%;transition:all .3s}
 .prog-dot.active{background:var(--green);width:28px;border-radius:5px}
 .prog-dot.done{background:var(--green);opacity:0.5}
 .prog-dot.inactive{background:rgba(255,255,255,0.12)}
-
 /* Form steps */
 .step-wrap{position:relative}
 .fstep{display:none;animation:fadeUp .3s ease}
 .fstep.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .step-q{font-family:var(--fh);font-size:clamp(18px,2.8vw,26px);font-weight:900;letter-spacing:-0.5px;color:var(--text-l);text-align:center;margin-bottom:24px;line-height:1.2}
-
 /* Radio cards — click to advance */
 .radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .radio-card{position:relative;cursor:pointer}
@@ -103,11 +98,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .radio-icon{font-size:22px;flex-shrink:0}
 .radio-text{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--text-l);line-height:1.3}
 .radio-sub{font-size:11px;color:var(--muted-l);margin-top:2px}
-
 /* Fix heading colours on light sections */
 .sec-w .sec-h,.sec-l .sec-h{color:var(--text-d)}
 .sec-w .sec-p,.sec-l .sec-p{color:var(--muted-d)}
-
 /* Step 3 inputs */
 .input-group{margin-bottom:13px}
 .input-group label{display:block;font-family:var(--fh);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted-l);margin-bottom:7px}
@@ -126,14 +119,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .form-success h3{font-family:var(--fh);font-size:28px;font-weight:900;color:var(--text-l);margin-bottom:8px}
 .form-success p{font-size:15px;color:var(--muted-l)}
 .form-success a{color:var(--green);font-weight:700}
-
+/* Calendly — only ever revealed after the lead form is submitted */
+.calendly-embed-wrap{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.35);margin:24px auto 0;max-width:640px}
+.calendly-embed{width:100%;height:720px}
+.calendly-loading{padding:70px 20px;text-align:center;font-size:13px;color:#8b9ab0}
+@media(max-width:600px){.calendly-embed{height:640px}}
 /* ===== TICKER ===== */
 .ticker{background:var(--gold);padding:13px 0;overflow:hidden}
 .ticker-t{display:flex;width:max-content;animation:tick 34s linear infinite}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .ti{font-family:var(--fh);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#000;white-space:nowrap;padding:0 32px}
 .tsep{color:rgba(0,0,0,0.3)}
-
 /* ===== AWARDS ===== */
 .awards-bar{background:var(--white);border-bottom:1px solid var(--border-l);padding:22px 28px}
 .awards-row{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
@@ -146,7 +142,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .st{width:12px;height:12px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
 .g-sc{font-family:var(--fh);font-weight:900;font-size:17px;color:var(--gold)}
 .g-sub{font-size:11px;color:var(--muted-d);line-height:1.3}
-
 /* ===== STATS SECTION ===== */
 .stats-sec{background:var(--white);padding:80px 28px}
 .stats-in{max-width:1100px;margin:0 auto}
@@ -159,7 +154,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .ms-n{font-family:var(--fh);font-size:clamp(52px,6vw,84px);font-weight:900;letter-spacing:-3px;line-height:1;margin-bottom:8px}
 .ms-n.g{color:var(--green)}.ms-n.gold{color:var(--gold)}.ms-n.dk{color:var(--text-d)}
 .ms-l{font-size:13px;color:var(--muted-d);line-height:1.45;font-weight:500}
-
 /* ===== SECTIONS ===== */
 .sec{padding:80px 28px}
 .sec-w{background:var(--white)}
@@ -180,12 +174,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(46,204,113,0.45)}60%{box-shadow:0 0 0 14px rgba(46,204,113,0)}}
 .btn-pulse{animation:pulse-glow 2.4s ease-in-out infinite}
 .cta-micro{font-size:12px;color:var(--muted-l);margin-top:10px;text-align:center}
-
 /* CTA strip */
 .cta-strip{background:var(--dark2);border-top:1px solid rgba(46,204,113,0.12);border-bottom:1px solid rgba(46,204,113,0.12);padding:48px 28px;text-align:center}
 .cta-strip h3{font-family:var(--fh);font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-1px;color:var(--text-l);margin-bottom:8px}
 .cta-strip p{font-size:15px;color:var(--muted-l);margin-bottom:22px}
-
 /* ===== CLIENT QUOTES ===== */
 .vt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .vt{border-left:4px solid var(--green);background:var(--white);border-radius:0 12px 12px 0;padding:26px 22px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
@@ -195,7 +187,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .vt-av{width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:900;font-size:13px;color:#000;flex-shrink:0}
 .vt-nm{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--text-d)}
 .vt-rl{font-size:11px;color:var(--muted-d)}
-
 /* ===== SUCCESS STORIES ===== */
 .rc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .rc{background:var(--white);border:1px solid var(--border-l);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.07);transition:transform .2s,box-shadow .2s}
@@ -220,7 +211,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .rn-v.g{color:var(--green)}.rn-v.gold{color:var(--gold)}
 .rc-q{font-size:12px;font-style:italic;color:var(--muted-d);border-top:1px solid var(--border-l);padding-top:12px;line-height:1.65}
 .rc-q::before{content:'\201C';color:var(--green);font-style:normal;font-weight:900;font-size:17px;margin-right:3px;vertical-align:-2px}
-
 /* ===== DARK-THEME RESULT CARDS ===== */
 .rc-d{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s}
 .rc-d:hover{transform:translateY(-3px);border-color:rgba(46,204,113,0.3)}
@@ -238,7 +228,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .rc-d .rn-v{color:var(--text-l)}
 .rc-d .rn-v.g{color:var(--green)}
 .rc-d .rn-v.gold{color:var(--gold)}
-
 /* ===== VIDEO TESTIMONIALS ===== */
 .vt-vid-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .vt-vid{border-radius:14px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)}
@@ -253,13 +242,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .vt-info{padding:13px 15px}
 .vt-vname{font-family:var(--fh);font-size:14px;font-weight:800;color:var(--text-l)}
 .vt-vrole{font-size:11px;color:var(--muted-l);margin-top:2px}
-
 /* Strip images */
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:40px}
 .strip-img{position:relative;height:280px;overflow:hidden;border-radius:10px;background:var(--light2)}
 .strip-img img{width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .5s}
 .strip-img:hover img{transform:scale(1.06)}
-
 /* ===== GOOGLE REVIEWS ===== */
 .g-banner{background:var(--white);border:1px solid var(--border-l);border-radius:14px;padding:32px 36px;margin-bottom:36px;display:flex;align-items:center;gap:36px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
 .g-score-big{font-family:var(--fh);font-size:68px;font-weight:900;letter-spacing:-3px;color:var(--gold);line-height:1}
@@ -279,7 +266,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .gr-av{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--green),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:900;font-size:11px;color:#000}
 .gr-nm{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--text-d)}
 .gr-rl{font-size:11px;color:var(--muted-d)}
-
 /* ===== TEAM ===== */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px}
 .tm{background:var(--white);border:1px solid var(--border-l);border-radius:14px;padding:32px 28px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
@@ -290,7 +276,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .tm-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(240,180,41,0.07);border:1px solid rgba(240,180,41,0.18);border-radius:4px;padding:5px 12px;margin-bottom:14px;font-family:var(--fh);font-size:11px;font-weight:800;color:var(--gold)}
 .tm-bio{font-size:14px;color:var(--muted-d);line-height:1.8}
 .tm-bio strong{color:var(--text-d)}
-
 /* ===== FINAL CTA ===== */
 .final{padding:88px 28px;background:var(--dark);text-align:center}
 .final h2{font-family:var(--fh);font-size:clamp(28px,4.5vw,58px);font-weight:900;letter-spacing:-2.5px;line-height:1.04;margin-bottom:14px;color:var(--text-l)}
@@ -300,12 +285,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .final-btn:hover{background:var(--green-d);transform:translateY(-1px)}
 .final-phone{margin-top:16px;font-size:14px;color:var(--muted-l)}
 .final-phone a{color:var(--green);font-weight:700}
-
 /* ===== FOOTER ===== */
 footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,0.06);padding:26px 28px;font-size:13px;color:var(--muted-l)}
 .foot-i{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a{color:var(--green)}
-
 /* ===== RESPONSIVE ===== */
 @media(max-width:1100px){.rc-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){
@@ -345,7 +328,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9P8DKMC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
 <!-- NAV -->
 <nav>
   <div class="nav-i">
@@ -356,7 +338,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </nav>
-
 <!-- HERO — While you waited -->
 <section class="hero" style="padding-top:52px;padding-bottom:0">
   <div class="hero-glow"></div>
@@ -372,7 +353,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <!-- VSL — directly below hero -->
 <section class="vsl-sec">
   <div class="vsl-in">
@@ -389,27 +369,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <style>wistia-player[media-id='ok0uq2yjk6']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ok0uq2yjk6/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
       <wistia-player player-color="#2ecc71" media-id="ok0uq2yjk6" aspect="1.7777777777777777" autoplay muted></wistia-player>
       <!-- Hide Wistia watermark -->
-          
+
     </div>
         <p class="vsl-hook">This is what moving looks like. Real clients. Real numbers. Watch — then <strong>take the step below.</strong></p>
   </div>
 </section>
-
-
 <!-- MULTI-STEP FORM — directly below VSL -->
 <section class="form-sec" id="contact">
   <div class="form-in">
     <div class="form-lbl">60 Seconds · Free · No Sales Pressure</div>
     <h2 class="form-headline">Stop Researching. Start Building.</h2>
-
     <div class="prog-wrap" id="prog">
       <div class="prog-dot active" id="pd1"></div>
       <div class="prog-dot inactive" id="pd2"></div>
       <div class="prog-dot inactive" id="pd3"></div>
     </div>
-
     <div class="step-wrap">
-
       <!-- STEP 1 -->
       <div class="fstep active" id="step1">
         <p class="step-q">What's your goal?</p>
@@ -448,7 +423,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div><!-- /radio-box -->
         <p class="form-disc">No obligation · No sales pressure · We respond same business day</p>
       </div>
-
       <!-- STEP 2 -->
       <div class="fstep" id="step2">
         <p class="step-q">What's your approximate budget?</p>
@@ -488,7 +462,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="btn-back" onclick="goStep(1)">← Back</button>
         <p class="form-disc">Your details are never shared with third parties</p>
       </div>
-
       <!-- STEP 3 -->
       <div class="fstep" id="step3">
         <p class="step-q">Last step: how do we reach you?</p>
@@ -516,14 +489,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="btn-back" onclick="goStep(2)">← Back</button>
         <p class="form-disc">Mon–Fri 8am–6pm AEST · Your details are never shared</p>
       </div>
-
     </div>
-
     <div class="form-success" id="formSuccess">
       <div class="success-icon">✓</div>
-      <h3>You're in. We'll be in touch!</h3>
-      <p style="margin-bottom:12px">Expect a call or email within one business day.</p>
-      <p>Need us sooner? Call <a href="tel:0721145984">(07) 2114 5984</a></p>
+      <h3>You're in. Now pick a time.</h3>
+      <p style="margin-bottom:4px">Grab a slot below and lock in your free Kick Off Call — no back-and-forth needed.</p>
+      <div class="calendly-embed-wrap">
+        <div id="calendlyEmbed"><div class="calendly-loading">Loading available times…</div></div>
+      </div>
+      <p style="margin-top:18px">Prefer to talk now? Call <a href="tel:0721145984">(07) 2114 5984</a></p>
     </div>
   </div>
 </section>
@@ -567,7 +541,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <!-- WHY JSC IS DIFFERENT -->
 <section class="sec sec-dk" style="border-top:1px solid var(--border-d)">
   <div class="con">
@@ -618,8 +591,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
-
 <!-- FUNDAMENTALS — Budget counter-narrative -->
 <section style="background:linear-gradient(160deg,#0d1117 0%,#161b24 100%);padding:80px 28px;border-top:1px solid rgba(46,204,113,0.15);border-bottom:1px solid rgba(46,204,113,0.15)">
   <div style="max-width:960px;margin:0 auto">
@@ -652,7 +623,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-t">
@@ -678,7 +648,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="ti">$10,667/Month Equity Per Property<span class="tsep"> · </span></span>
   </div>
 </div>
-
 <!-- AWARDS -->
 <div class="awards-bar">
   <div class="awards-row">
@@ -709,7 +678,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </div>
-
 <!-- STATS — big numbers -->
 <section class="stats-sec">
   <div class="stats-in">
@@ -741,7 +709,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <!-- WORST RESULT FEATURE SECTION -->
 <section style="background:linear-gradient(160deg,#0a0f16 0%,var(--dark2) 50%,#0a0f16 100%);padding:120px 28px;border-top:3px solid rgba(240,180,41,0.35);border-bottom:3px solid rgba(240,180,41,0.35);position:relative;overflow:hidden">
   <!-- Gold glow -->
@@ -770,7 +737,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="cta-micro" style="margin-top:14px">Free · No obligation · Straight talk from day one</p>
   </div>
 </section>
-
 <!-- VIDEO TESTIMONIALS -->
 <section class="sec sec-dk">
   <div class="con">
@@ -780,7 +746,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p style="font-size:15px;color:var(--muted-l);text-align:center;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto">No scripts. No actors. Click any card to watch.</p>
     </div>
     <div class="vt-vid-grid">
-
       <!-- Jack -->
       <div class="vt-vid">
         <div style="position:relative;">
@@ -789,11 +754,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='qsyftju8hy']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qsyftju8hy/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="qsyftju8hy" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-          
+
         </div>
         <div class="vt-info"><div class="vt-vname">Jack</div><div class="vt-vrole">ADF Member · Owner-Occupier</div></div>
       </div>
-
       <!-- Lachlan -->
       <div class="vt-vid">
         <div style="position:relative;">
@@ -802,11 +766,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='8pyz7hw8vd']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/8pyz7hw8vd/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="8pyz7hw8vd" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-          
+
         </div>
         <div class="vt-info"><div class="vt-vname">Lachlan</div><div class="vt-vrole">Busy Professional · First Investment</div></div>
       </div>
-
       <!-- Brock & Bree -->
       <div class="vt-vid">
         <div style="position:relative;">
@@ -815,11 +778,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='lsvg5z9xwm']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/lsvg5z9xwm/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="lsvg5z9xwm" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-          
+
         </div>
         <div class="vt-info"><div class="vt-vname">Brock & Bree</div><div class="vt-vrole">Investors · 40% growth in 2 years</div></div>
       </div>
-
       <!-- Trav & Amanda -->
       <div class="vt-vid">
         <div style="position:relative;">
@@ -828,18 +790,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='3s7ynuw1hl']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/3s7ynuw1hl/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="3s7ynuw1hl" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-          
+
         </div>
         <div class="vt-info"><div class="vt-vname">Trav & Amanda</div><div class="vt-vrole">First Home Buyers · QLD</div></div>
       </div>
-
     </div>
     <div style="text-align:center;margin-top:36px">
       <a href="#contact" class="btn-primary">Book a Free Kick Off Call →</a>
     </div>
   </div>
 </section>
-
 <!-- SUCCESS STORIES -->
 <section class="sec sec-dk2" id="results">
   <div class="con">
@@ -848,10 +808,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="sec-h light">Real numbers.<br><span class="gold">Real clients. All verified.</span></h2>
       <p class="sec-p light">Every figure below is independently verifiable. Real property, real client, real outcome.</p>
     </div>
-
     <!-- All 27 verified acquisitions — correct photo-to-client mapping from live portfolio -->
     <div class="rc-grid">
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1kKdt0Gt5Ox2ztD5VB1FEiBLWWFmlhob3&sz=w800" alt="Brock · Adelaide SA" loading="lazy"></div>
         <div class="rc-d-body">
@@ -865,7 +823,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=18D5Vb4oCJkhPtrAgLQTAKOQiIiVIuHtW&sz=w800" alt="Jack · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -879,7 +836,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=13Ee4-bcpCulOQqCSmzS4xvZ-fVYQvspd&sz=w800" alt="Stuart · Adelaide SA" loading="lazy"></div>
         <div class="rc-d-body">
@@ -893,7 +849,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1HmC-lazT3yF3D0QFChPX-norHl32r9YQ&sz=w800" alt="Joshua · Ipswich QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -907,7 +862,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1AulVD4lwPaMxXs3mh90mp1QT8eTPkpXj&sz=w800" alt="Charlotte · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -921,7 +875,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=18UR3IFWcmxOVnQo8bITJi2YOT_2Ntnrj&sz=w800" alt="Lachlan · Adelaide SA" loading="lazy"></div>
         <div class="rc-d-body">
@@ -935,7 +888,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1_Ts5K_UCayG-lVDk41vgXW2JGWf9H65w&sz=w800" alt="Sam · Adelaide SA" loading="lazy"></div>
         <div class="rc-d-body">
@@ -949,7 +901,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1kZi0eLcEmjwPeaCrNuOcAjQP3qMNrcwf&sz=w800" alt="Elmer · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -963,7 +914,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1O1KEYCeO-NpMaUPnH8QXSq1WXzYexUps&sz=w800" alt="Georgina · Ipswich QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -977,7 +927,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1NJxOhCxSkhH9-B-KabGMpB9XN6m9FF24&sz=w800" alt="Hunter · Adelaide SA" loading="lazy"></div>
         <div class="rc-d-body">
@@ -991,7 +940,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1VGCktyZInheZWfllrMTYAynwtcstVLBr&sz=w800" alt="Cory · Logan QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1005,7 +953,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=17-FQmx_yhfiBoX2DXtpmdeKwGknOLG9C&sz=w800" alt="Stuart · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1019,7 +966,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1LDkeVA14Wahe1tknMhr-e_4Ts3OfTOqY&sz=w800" alt="Travis · Ipswich QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1033,7 +979,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1ML6RoEbu9WyU4lGi50vfgEJUqCXAfGcR&sz=w800" alt="Hunter · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1047,7 +992,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1nO0zUVAsN0tv9w9W5wEPGScytWZZCLaR&sz=w800" alt="Lydia · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1061,7 +1005,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1Wquer6iG6HiDHuOW7iE7IByOr71EG2-w&sz=w800" alt="Simone · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1075,7 +1018,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1i1IuSmTpuzeW48Rij2GaiXJMrSS9C_2k&sz=w800" alt="Travis · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1089,7 +1031,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1URdaCAu9NEFxTM6nAkz7MgDf6JqIYGxV&sz=w800" alt="Joshua · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1103,7 +1044,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1ymNQGZM-U5vJLVwp8-ixYXcErkIwizDm&sz=w800" alt="Jordan · Moreton Bay QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1117,7 +1057,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1FnEiqIby2BrB1ZwnOWHBgVOujHoAhFKg&sz=w800" alt="Alex · Brisbane QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1131,7 +1070,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1mOSpIEyHz1qdfrVfUDGGknleRhfL6Rrl&sz=w800" alt="Desmond · Ipswich QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1145,7 +1083,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1rqcV0yxaiLoEj9gw_CQlupqNrUgRp9X5&sz=w800" alt="Stuart · Ipswich QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1159,7 +1096,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <!-- Recently Settled — 5 cards -->
       <div class="rc-d" style="border-color:rgba(240,180,41,0.2)">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1tCS1SRu2iOPM7kaI1MEmQNwDONFjsSdz&sz=w800" alt="Flynn · Moreton Bay QLD" loading="lazy"></div>
@@ -1174,7 +1110,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
       <div class="rc-d" style="border-color:rgba(240,180,41,0.2)">
         <div class="rc-d-photo"><img src="https://drive.google.com/thumbnail?id=1klckv6B7e23oPnERgnrhcsVXwddTI3YU&sz=w800" alt="Michael · Ipswich QLD" loading="lazy"></div>
         <div class="rc-d-body">
@@ -1188,9 +1123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-
     </div>
-
     <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--muted-l)"><strong style="color:var(--green)">19.1% avg annual growth · 3.3% avg discount off asking · zero losses</strong></p>
     <p style="text-align:center;margin-top:6px;font-size:12px;color:rgba(255,255,255,0.2)">Gold border = recently settled. Projected values based on current market conditions. Past performance is not indicative of future results.</p>
     <div style="text-align:center;margin-top:30px">
@@ -1198,14 +1131,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <!-- CTA STRIP -->
 <div class="cta-strip">
   <h3>Perfect 5-star rating. <span style="color:var(--green)">Zero losses. All verified.</span></h3>
   <p>See what's possible for your situation. Your kick off call is free and obligation-free.</p>
   <a href="#contact" class="btn-primary">Book My Free Kick Off Call →</a>
 </div>
-
 <!-- GOOGLE REVIEWS -->
 <section class="sec sec-l">
   <div class="con">
@@ -1226,7 +1157,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="https://www.google.com/maps/place/JSC+Property+Investments" target="_blank" class="g-link">View all reviews on Google →</a>
       </div>
     </div>
-
     <div class="gr-grid">
       <div class="gr">
         <div class="gr-stars"><div class="gr-s"></div><div class="gr-s"></div><div class="gr-s"></div><div class="gr-s"></div><div class="gr-s"></div></div>
@@ -1289,13 +1219,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gr-who"><div class="gr-av">MB</div><div><div class="gr-nm">Matt B.</div><div class="gr-rl">Property Investing Client</div></div></div>
       </div>
     </div>
-
     <p style="text-align:center;margin-top:22px">
       <a href="https://www.google.com/maps/place/JSC+Property+Investments" target="_blank" style="color:var(--green);font-family:var(--fh);font-weight:800;font-size:14px">View all reviews on Google →</a>
     </p>
   </div>
 </section>
-
 <!-- TEAM -->
 <section class="sec sec-w">
   <div class="con">
@@ -1329,7 +1257,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
-
 <!-- FINAL CTA -->
 <section class="final">
   <div style="max-width:680px;margin:0 auto">
@@ -1340,7 +1267,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="final-phone">Or call us now: <a href="tel:0721145984">(07) 2114 5984</a> &nbsp;·&nbsp; Mon–Fri 8am–6pm AEST</div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <div class="foot-i">
@@ -1349,10 +1275,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>© 2026 JSC Property Investments · <a href="https://jscpropertyinvestments.com.au">jscpropertyinvestments.com.au</a></div>
   </div>
 </footer>
-
 <script>
 let currentStep = 1;
-
 function goStep(n) {
   document.getElementById('step' + currentStep).classList.remove('active');
   document.getElementById('step' + n).classList.add('active');
@@ -1360,7 +1284,6 @@ function goStep(n) {
   updateDots(n);
   document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 function updateDots(n) {
   for (let i = 1; i <= 3; i++) {
     const d = document.getElementById('pd' + i);
@@ -1369,20 +1292,17 @@ function updateDots(n) {
     else { d.className = 'prog-dot inactive'; }
   }
 }
-
 // Auto-advance on radio click — 280ms delay for visual feedback
 document.querySelectorAll('input[name="goal"]').forEach(r => {
   r.addEventListener('change', () => {
     setTimeout(() => goStep(2), 280);
   });
 });
-
 document.querySelectorAll('input[name="budget"]').forEach(r => {
   r.addEventListener('change', () => {
     setTimeout(() => goStep(3), 280);
   });
 });
-
 function submitForm() {
   var fn = document.getElementById('fn').value.trim();
   var ln = document.getElementById('ln').value.trim();
@@ -1397,10 +1317,8 @@ function submitForm() {
     alert('Please fill in all fields before submitting.');
     return;
   }
-
   // Populate tracking fields right before submit
   if (typeof window.getTrackingData === 'function') window.getTrackingData();
-
   // Collect all form data
   var data = new FormData();
   data.append('xnQsjsdp',  '8ffa449c2d9c8b0025d14f2bc9727459a65459deb6a4517c5c503a28f26d2f4c');
@@ -1412,7 +1330,6 @@ function submitForm() {
   data.append('Last Name',  ln);
   data.append('Email',      em);
   data.append('Mobile',     ph);
-
   // Goal and budget from radio selections
   var goalEl = document.querySelector('input[name="goal"]:checked');
   var budgetEl = document.querySelector('input[name="budget"]:checked');
@@ -1423,7 +1340,6 @@ function submitForm() {
   if (utmSource.match(/facebook|meta|instagram/i)) leadOrigin = 'Meta Ads';
   else if (utmSource.match(/google/i))             leadOrigin = 'Google Ads';
   data.append('LEADCF177', leadOrigin);
-
   // Tracking fields
   var trackIds = ['hf-page','hf-utm-source','hf-utm-medium','hf-utm-campaign','hf-utm-content','hf-referrer'];
   var trackNames = ['LEADCF215','LEADCF214','LEADCF217','LEADCF216','LEADCF218','LEADCF219'];
@@ -1431,7 +1347,6 @@ function submitForm() {
     var el = document.getElementById(trackIds[i]);
     if (el && el.value) data.append(trackNames[i], el.value);
   }
-
   // Submit to Zoho in background (no-cors — Zoho receives it, we can't read the response)
   fetch('https://crm.zoho.com.au/crm/WebToLeadForm', {
     method: 'POST',
@@ -1441,7 +1356,6 @@ function submitForm() {
     // Silent fail — lead may still have been created
     console.warn('Zoho submission error (may still have succeeded)');
   });
-
   // Fire GA4 conversion event
   if (typeof gtag !== 'undefined') {
     gtag('event', 'form_submission', {
@@ -1450,7 +1364,6 @@ function submitForm() {
       value: 1
     });
   }
-
   // Show success state immediately — don't make the user wait
   document.querySelector('.step-wrap').style.display = 'none';
   document.getElementById('prog').style.display = 'none';
@@ -1458,28 +1371,50 @@ function submitForm() {
   if (document.querySelector('.form-sub')) document.querySelector('.form-sub').style.display = 'none';
   document.querySelector('.form-lbl').style.display = 'none';
   document.getElementById('formSuccess').classList.add('show');
+  document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'start' });
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({'event': 'form_submission'});
+  // Reveal Calendly only now — gated behind a completed lead form
+  renderCalendly(fn, ln, em, ph);
+}
+// Calendly is only initialised here, after the lead form has been submitted.
+// It is never present on the page (and never bookable) before that point.
+function renderCalendly(fn, ln, em, ph) {
+  var CALENDLY_URL = 'https://calendly.com/elenore-jscpropertyinvestments/1-1-kick-off-call-with-elenore';
+  var target = document.getElementById('calendlyEmbed');
+  function init() {
+    target.innerHTML = '';
+    window.Calendly.initInlineWidget({
+      url: CALENDLY_URL + '?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=2ecc71',
+      parentElement: target,
+      prefill: {
+        name: (fn + ' ' + ln).trim(),
+        email: em,
+        customAnswers: { a1: ph }
+      }
+    });
+    target.classList.add('calendly-embed');
+  }
+  if (window.Calendly) { init(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://assets.calendly.com/assets/external/widget.js';
+  s.onload = init;
+  document.body.appendChild(s);
 }
 </script>
-
-
 <script>
 // ── UTM + source capture ─────────────────────────────────
 (function() {
   var PAGE_VARIANT = 'action';
   var params = new URLSearchParams(window.location.search);
-
   function getParam(key) {
     // Check URL first, then sessionStorage (persists across soft navigations)
     return params.get(key) || sessionStorage.getItem(key) || '';
   }
-
   // Persist UTMs to session so they survive any soft redirects
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k) {
     if (params.get(k)) sessionStorage.setItem(k, params.get(k));
   });
-
   function populateTracking() {
     var f = function(id, val) {
       var el = document.getElementById(id);
@@ -1493,11 +1428,9 @@ function submitForm() {
     f('hf-utm-term',     getParam('utm_term'));
     f('hf-referrer',     document.referrer || '');
   }
-
   // Run on load and again just before submit to be safe
   document.addEventListener('DOMContentLoaded', populateTracking);
   document.addEventListener('submit', populateTracking, true);
-
   // Also expose for the manual submitForm() call
   window.getTrackingData = function() {
     populateTracking();
@@ -1513,7 +1446,6 @@ function submitForm() {
   };
 })();
 </script>
-
 <script>
 if (window.customElements) {
   customElements.whenDefined('wistia-player').then(function() {
