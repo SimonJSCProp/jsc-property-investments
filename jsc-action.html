@@ -12,9 +12,10 @@
 <link rel="dns-prefetch" href="//fast.wistia.com">
 <!-- Calendly — assets preloaded in the background so booking is instant after submit.
      The widget itself is never rendered/initialised until the lead form is completed. -->
-<link rel="preconnect" href="https://assets.calendly.com">
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
 <link rel="preconnect" href="https://calendly.com">
 <link rel="dns-prefetch" href="//assets.calendly.com">
+<link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" fetchpriority="high">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -335,7 +336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Calendly widget.js — fetched in the background while the visitor fills out the form.
      Downloading the script early does not create or expose a booking widget: nothing
      is rendered until renderCalendly() explicitly calls initInlineWidget() post-submit. -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async fetchpriority="high"></script>
 <!-- NAV -->
 <nav>
   <div class="nav-i">
