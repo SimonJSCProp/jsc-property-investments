@@ -10,6 +10,13 @@
 <!-- Wistia preconnect for faster video load -->
 <link rel="preconnect" href="https://fast.wistia.com">
 <link rel="dns-prefetch" href="//fast.wistia.com">
+<!-- Calendly — assets preloaded in the background so booking is instant after submit.
+     The widget itself is never rendered/initialised until the lead form is completed. -->
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+<link rel="preconnect" href="https://calendly.com">
+<link rel="dns-prefetch" href="//assets.calendly.com">
+<link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" fetchpriority="high">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -117,6 +124,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;ali
 .form-success h3{font-family:var(--fh);font-size:28px;font-weight:900;color:var(--text-l);margin-bottom:8px}
 .form-success p{font-size:15px;color:var(--muted-l)}
 .form-success a{color:var(--green);font-weight:700}
+/* Calendly — only ever revealed after the lead form is submitted */
+.calendly-embed-wrap{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.35);margin:24px auto 0;max-width:640px}
+.calendly-embed{width:100%;height:720px}
+.calendly-loading{padding:70px 20px;text-align:center;font-size:13px;color:#8b9ab0}
+@media(max-width:600px){.calendly-embed{height:640px}}
 /* ===== TICKER ===== */
 .ticker{background:var(--gold);padding:13px 0;overflow:hidden}
 .ticker-t{display:flex;width:max-content;animation:tick 34s linear infinite}
@@ -321,6 +333,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9P8DKMC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<!-- Calendly widget.js — fetched in the background while the visitor fills out the form.
+     Downloading the script early does not create or expose a booking widget: nothing
+     is rendered until renderCalendly() explicitly calls initInlineWidget() post-submit. -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async fetchpriority="high"></script>
 <!-- NAV -->
 <nav>
   <div class="nav-i">
@@ -362,7 +378,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <style>wistia-player[media-id='ok0uq2yjk6']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ok0uq2yjk6/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
       <wistia-player player-color="#2ecc71" media-id="ok0uq2yjk6" aspect="1.7777777777777777" autoplay muted></wistia-player>
       <!-- Hide Wistia watermark -->
-
     </div>
         <p class="vsl-hook">From one veteran to another. Watch what happens when your property strategy actually works around postings — not against them. Then <strong>take the next step below.</strong></p>
   </div>
@@ -535,9 +550,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="form-success" id="formSuccess">
       <div class="success-icon">✓</div>
-      <h3>You're in. We'll be in touch!</h3>
-      <p style="margin-bottom:12px">Expect a call or email within one business day.</p>
-      <p>Need us sooner? Call <a href="tel:0721145984">(07) 2114 5984</a></p>
+      <h3>You're in. Now pick a time.</h3>
+      <p style="margin-bottom:4px">Grab a slot below and lock in your free Kick Off Call — no back-and-forth needed.</p>
+      <div class="calendly-embed-wrap">
+        <div id="calendlyEmbed"><div class="calendly-loading">Loading available times…</div></div>
+      </div>
+      <p style="margin-top:18px">Prefer to talk now? Call <a href="tel:0721145984">(07) 2114 5984</a></p>
     </div>
   </div>
 </section>
@@ -675,7 +693,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='qsyftju8hy']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qsyftju8hy/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="qsyftju8hy" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-
         </div>
         <div class="vt-info"><div class="vt-vname">Jack</div><div class="vt-vrole">ADF Member · Owner-Occupier</div></div>
       </div>
@@ -687,7 +704,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='8pyz7hw8vd']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/8pyz7hw8vd/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="8pyz7hw8vd" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-
         </div>
         <div class="vt-info"><div class="vt-vname">Lachlan</div><div class="vt-vrole">Busy Professional · First Investment</div></div>
       </div>
@@ -699,7 +715,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='lsvg5z9xwm']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/lsvg5z9xwm/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="lsvg5z9xwm" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-
         </div>
         <div class="vt-info"><div class="vt-vname">Brock & Bree</div><div class="vt-vrole">Investors · 40% growth in 2 years</div></div>
       </div>
@@ -711,7 +726,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <style>wistia-player[media-id='3s7ynuw1hl']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/3s7ynuw1hl/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
           <wistia-player player-color="#2ecc71" media-id="3s7ynuw1hl" aspect="0.5625"></wistia-player>
           <!-- Hide Wistia watermark -->
-
         </div>
         <div class="vt-info"><div class="vt-vname">Trav & Amanda</div><div class="vt-vrole">First Home Buyers · QLD</div></div>
       </div>
@@ -1273,8 +1287,40 @@ function submitForm() {
   if (document.querySelector('.form-sub')) document.querySelector('.form-sub').style.display = 'none';
   document.querySelector('.form-lbl').style.display = 'none';
   document.getElementById('formSuccess').classList.add('show');
+  document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'start' });
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({'event': 'form_submission'});
+  // Reveal Calendly only now — gated behind a completed lead form
+  renderCalendly(fn, ln, em, ph);
+}
+// Calendly is only *rendered* here, after the lead form has been submitted — the
+// widget.js file is fetched quietly in the background (see <head>) so this is instant
+// for almost every visitor. It is never bookable or present on the page before this point.
+function renderCalendly(fn, ln, em, ph) {
+  var CALENDLY_URL = 'https://calendly.com/elenore-jscpropertyinvestments/1-1-kick-off-call-with-elenore';
+  var target = document.getElementById('calendlyEmbed');
+  function init() {
+    target.innerHTML = '';
+    window.Calendly.initInlineWidget({
+      url: CALENDLY_URL + '?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=2ecc71',
+      parentElement: target,
+      prefill: {
+        name: (fn + ' ' + ln).trim(),
+        email: em,
+        customAnswers: { a1: ph }
+      }
+    });
+    target.classList.add('calendly-embed');
+  }
+  // Almost always already loaded (preloaded in background). Fallback poll covers
+  // the rare case of a very slow connection where the async script is still in flight.
+  if (window.Calendly) { init(); return; }
+  var tries = 0;
+  var poll = setInterval(function () {
+    tries++;
+    if (window.Calendly) { clearInterval(poll); init(); }
+    else if (tries > 100) { clearInterval(poll); target.innerHTML = '<div class="calendly-loading">Having trouble loading the calendar — <a href="' + CALENDLY_URL + '" target="_blank" rel="noopener" style="color:#2ecc71;font-weight:700">click here to book directly →</a></div>'; }
+  }, 100);
 }
 </script>
 <script>
