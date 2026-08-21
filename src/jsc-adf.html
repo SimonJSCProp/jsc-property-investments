@@ -343,6 +343,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 
 <style id="v2-panel">
+
+/* Option A: green ribbon + glow frame on the action panel */
+.form-sec .form-in{border:2px solid #2ecc71;box-shadow:0 0 0 6px rgba(46,204,113,.12),0 18px 50px rgba(46,204,113,.15);padding-top:0;overflow:hidden}
+.v2-ribbon{background:#2ecc71;color:#06120b;text-align:center;padding:13px 10px 11px;font-weight:900;font-size:19px;letter-spacing:.3px;margin:0 -16px 14px}
+.v2-arrow{display:inline-block;font-size:20px;line-height:.9;animation:v2bob 1.2s ease-in-out infinite}
+@keyframes v2bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media (prefers-reduced-motion:reduce){.v2-arrow{animation:none}}
+.form-sec .form-headline{display:none}
+.form-sec .form-sub{font-size:13.5px;color:#a8b5ad;margin:0 0 12px}
+
 #firstfold{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-bottom:12px}
 @supports not (height:100svh){#firstfold{min-height:100vh}}
 #firstfold .hero{padding-top:26px}
@@ -395,9 +405,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 <section class="form-sec" id="contact">
   <div class="form-in">
+    <div class="v2-ribbon">GET STARTED HERE <span class="v2-arrow">▼</span></div>
     <div class="form-lbl">Free · Obligation-Free</div>
     <h2 class="form-headline">Book your free Kick Off Call</h2>
-    <p class="form-sub">Free · 30 minutes · No obligation · Takes 60 seconds to book</p>
+    <p class="form-sub">Free 30-minute Kick Off Call · No obligation · Takes 60 seconds to book</p>
     <div class="prog-wrap" id="prog">
       <div class="prog-dot active" id="pd1"></div>
       <div class="prog-dot inactive" id="pd2"></div>
