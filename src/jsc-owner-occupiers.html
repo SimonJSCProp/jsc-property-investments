@@ -135,7 +135,7 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(
 .success.on{display:block}
 .success h3{font-size:clamp(22px,3vw,30px);font-weight:900;margin-bottom:8px;color:var(--dink)}
 .success .p{color:var(--dmuted);margin:0 auto;text-align:center}
-.cal{min-height:680px;border-radius:12px;overflow:hidden;background:#fff;margin-top:18px}
+.cal{height:760px;border-radius:12px;overflow:hidden;background:#fff;margin-top:18px}.cal .calendly-inline-widget,.cal .calendly-inline-widget iframe{height:100%!important}@media(max-width:600px){.cal{height:860px}}
 .cal .ld{padding:60px 20px;color:var(--dmuted)}
 .hide{display:none!important}
 /* stat band */
@@ -734,8 +734,8 @@ footer a{color:var(--muted)}
     qs('#serr').classList.toggle('on', !ok);
     if (!ok) return;
     var d = new FormData();
-    d.append('xnQsjsdp',  '01fa4b9caa79d4f145b23261022ea0e2fe9029996ca97b72285c1e9c7de890c4');
-    d.append('xmIwtLD',   '87199d4789e671c63cdcab9e7f5b08213dc48a732dd061fb534eaec8f9ef8d4bccada6a6851344036e8307305491db21');
+    d.append('xnQsjsdp',  '92618fda15d145ad82713b73b550c3134fdd42eeb789b16decf764e07eec22be');
+    d.append('xmIwtLD',   'b307c82b37804d5e54c5c8103658cca31c94a7f69e1838e41a48467ed2ff796a33d7405415e4ecf188039964b9de8cad');
     d.append('actionType','TGVhZHM='); d.append('zc_gad', ss('gclid')); d.append('aG9uZXlwb3Q', '');
     d.append('First Name', sfn); d.append('Last Name', '(street check)'); d.append('Email', sem); if (sph) d.append('Mobile', sph);
     d.append('Description', 'STREET CHECK: ' + st + ' | Fee variant: ' + FEE.toUpperCase() + ' | Reply within one business day (Justin drafts, Jacob signs the number)');
@@ -760,8 +760,8 @@ footer a{color:var(--muted)}
     if (!ok) return;
 
     var data = new FormData();
-    data.append('xnQsjsdp',  '01fa4b9caa79d4f145b23261022ea0e2fe9029996ca97b72285c1e9c7de890c4');
-    data.append('xmIwtLD',   '87199d4789e671c63cdcab9e7f5b08213dc48a732dd061fb534eaec8f9ef8d4bccada6a6851344036e8307305491db21');
+    data.append('xnQsjsdp',  '92618fda15d145ad82713b73b550c3134fdd42eeb789b16decf764e07eec22be');
+    data.append('xmIwtLD',   'b307c82b37804d5e54c5c8103658cca31c94a7f69e1838e41a48467ed2ff796a33d7405415e4ecf188039964b9de8cad');
     data.append('actionType','TGVhZHM=');
     data.append('zc_gad', ss('gclid'));
     data.append('aG9uZXlwb3Q', '');
@@ -770,7 +770,7 @@ footer a{color:var(--muted)}
     data.append('LEADCF220', picked('budget'));
     data.append('LEADCF42', picked('broker'));
     var goalEl = qs('input[name="goal"]:checked'); var goalLabel = goalEl ? (goalEl.getAttribute('data-label') || goalEl.value) : '';
-    data.append('Description', 'Where at: ' + goalLabel + ' | Stuck on: ' + picked('stuck') + ' | Broker: ' + picked('broker') + ' | Page: ' + PAGE_VARIANT);
+    data.append('LEADCF312', picked('stuck'));
     var src = ss('utm_source') || getParam('utm_source');
     var origin = 'Website'; if (/facebook|meta|instagram|fb|ig/i.test(src)) origin = 'Meta Ads'; else if (/google/i.test(src)) origin = 'Google Ads';
     data.append('LEADCF177', origin);
