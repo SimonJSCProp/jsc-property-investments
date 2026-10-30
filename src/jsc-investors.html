@@ -135,7 +135,7 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(
 .success.on{display:block}
 .success h3{font-size:clamp(22px,3vw,30px);font-weight:900;margin-bottom:8px;color:var(--dink)}
 .success .p{color:var(--dmuted);margin:0 auto;text-align:center}
-.cal{height:760px;border-radius:12px;overflow:hidden;background:#fff;margin-top:18px}.cal .calendly-inline-widget,.cal .calendly-inline-widget iframe{height:100%!important}@media(max-width:600px){.cal{height:860px}}
+.who{max-width:640px;margin:16px auto 0;text-align:left;background:#fff;border:1px solid rgba(11,15,22,.1);border-left:4px solid var(--green);border-radius:10px;padding:14px 16px;font-size:14.5px;line-height:1.55;color:var(--dink)}.who p{margin:0 0 8px}.who p:last-child{margin-bottom:0}.cal{height:760px;border-radius:12px;overflow:hidden;background:#fff;margin-top:18px}.cal .calendly-inline-widget,.cal .calendly-inline-widget iframe{height:100%!important}@media(max-width:600px){.cal{height:860px}}
 .cal .ld{padding:60px 20px;color:var(--dmuted)}
 .hide{display:none!important}
 /* stat band */
@@ -392,6 +392,10 @@ footer a{color:var(--muted)}
     <div class="success" id="success">
       <h3>Pick a time.</h3>
       <p class="p">Twenty minutes. Bring a rough borrowing figure if you have one. We'll do the rest.</p>
+      <div class="who">
+        <p><strong>This call is for</strong> buyers who are ready to act and have spoken to a broker or hold a pre-approval.</p>
+        <p><strong>It's not for you</strong> if you want the cheapest agent, a house-and-land package, or you're buying in a year.</p>
+      </div>
       <div class="cal" id="cal"><div class="ld">Loading available times&hellip;</div></div>
       <p class="micro" style="margin-top:16px">Rather talk now? Call (07) 2116 0317</p>
     </div>
@@ -815,6 +819,8 @@ footer a{color:var(--muted)}
 
   /* ---- Calendly, only after the lead exists in Zoho ---- */
   var CAL = 'https://calendly.com/elenore-jscpropertyinvestments/1-1-kick-off-call-with-elenore';
+  /* Calendly phone prefill: the booking form's phone box wants an international number */
+  function jscPhone(p){ var d = String(p || '').replace(/[^\d+]/g, ''); if (/^\+/.test(d)) return d; if (/^0\d{9}$/.test(d)) return '+61' + d.slice(1); if (/^61\d{9}$/.test(d)) return '+' + d; return String(p || ''); }
   function renderCalendly(fn, ln, em, ph){
     var target = qs('#cal'), tries = 0;
     (function tick(){
@@ -823,7 +829,7 @@ footer a{color:var(--muted)}
         window.Calendly.initInlineWidget({
           url: CAL + '?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=2ecc71&utm_source=' + encodeURIComponent(ss('utm_source')) + '&utm_campaign=' + encodeURIComponent(ss('utm_campaign')) + '&utm_content=' + encodeURIComponent(PAGE_VARIANT),
           parentElement: target,
-          prefill: { name: (fn + ' ' + ln).trim(), email: em, customAnswers: { a1: ph } }
+          prefill: { name: (fn + ' ' + ln).trim(), email: em, location: jscPhone(ph), customAnswers: { a1: picked('stuck') ? 'Stuck on: ' + picked('stuck') : '' } }
         });
       } else if (tries++ < 60) { setTimeout(tick, 250); }
       else { target.innerHTML = '<div class="ld">The calendar is slow to load. Open it here: <a style="color:var(--green)" href="' + CAL + '" target="_blank" rel="noopener">calendly.com/elenore-jscpropertyinvestments</a></div>'; }
